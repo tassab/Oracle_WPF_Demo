@@ -156,7 +156,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BackendModel\Model.csproj">
+    <ProjectReference Include="..\Model\Model.csproj">
       <Project>{f7345588-95da-4b3f-8a64-215ed5889607}</Project>
       <Name>Model</Name>
     </ProjectReference>
