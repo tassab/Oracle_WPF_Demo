@@ -1,0 +1,26 @@
+﻿<UserControl x:Class="TestApp.EmployeeConfigurator"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TestApp"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <TextBlock Text="{Binding Title}" FontSize="18" HorizontalAlignment="Center"/>
+        <ContentControl Grid.Row="1" Content="{Binding Content}"/>
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0" Width="200" Height="50" Content="{Binding BackButtonText}" Command="{Binding BackButton}" Margin="5"/>
+            <Button Grid.Column="1" Width="200" Height="50" Content="{Binding ForwardButtonText}" Command="{Binding ForwardButton}" Margin="5"/>
+        </Grid>
+    </Grid>
+</UserControl>
