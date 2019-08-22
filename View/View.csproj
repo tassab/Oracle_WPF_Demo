@@ -93,9 +93,11 @@
       <DependentUpon>AppView.xaml</DependentUpon>
     </Compile>
     <Compile Include="AppViewVM.cs" />
-    <Compile Include="EmployeeConfigurator\EmployeeConfiguratorVM.cs" />
-    <Compile Include="EmployeeConfigurator\EmployeeConfigurator.xaml.cs">
-      <DependentUpon>EmployeeConfigurator.xaml</DependentUpon>
+    <Compile Include="Configurator\BaseConfiguratorVM.cs" />
+    <Compile Include="Configurator\OrderConfiguratorVM.cs" />
+    <Compile Include="Configurator\EmployeeConfiguratorVM.cs" />
+    <Compile Include="Configurator\Configurator.xaml.cs">
+      <DependentUpon>Configurator.xaml</DependentUpon>
     </Compile>
     <Compile Include="EmployeeModifier\EmployeeModifier.xaml.cs">
       <DependentUpon>EmployeeModifier.xaml</DependentUpon>
@@ -118,7 +120,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="EmployeeConfigurator\EmployeeConfigurator.xaml">
+    <Page Include="Configurator\Configurator.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

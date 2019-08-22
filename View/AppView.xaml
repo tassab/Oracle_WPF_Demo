@@ -12,7 +12,7 @@
             <local:EmployeeSelector />
         </DataTemplate>
         <DataTemplate DataType="{x:Type local:EmployeeConfiguratorVM}">
-            <local:EmployeeConfigurator />
+            <local:Configurator />
         </DataTemplate>
         <DataTemplate DataType="{x:Type local:EmployeeModifierVM}">
             <local:EmployeeModifier />
