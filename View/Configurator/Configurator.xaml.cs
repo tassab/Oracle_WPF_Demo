@@ -18,9 +18,9 @@ namespace TestApp
     /// <summary>
     /// Interaction logic for EmployeeConfigurator.xaml
     /// </summary>
-    public partial class EmployeeConfigurator : UserControl
+    public partial class Configurator : UserControl
     {
-        public EmployeeConfigurator()
+        public Configurator()
         {
             InitializeComponent();
         }
