@@ -8,9 +8,13 @@ namespace Model
 {
     public class OracleDB : DbContext
     {
-        public OracleDB() : base(new OracleConnection("User Id=OT;Password=Orcl1234;Data Source=localhost:1521/XEPDB1;"), true)
+        public OracleDB() : base("name=SchemaOT")
         {
         }
+        public OracleDB(string connectionString) : base(connectionString)
+        {
+        }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);

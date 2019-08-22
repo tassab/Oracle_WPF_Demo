@@ -1,0 +1,24 @@
+﻿<UserControl x:Class="TestApp.MainMenu"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TestApp"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <TextBlock Text="WPF Oracle Test App Menu" Grid.ColumnSpan="2" FontSize="36" HorizontalAlignment="Center" Margin="5"/>
+        <Button Grid.Column="0" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center"
+                Width="200" Height="200" Content="Employee Configurator" Command="{Binding OpenEmployeeConfigurator}"/>
+        <Button Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center"
+                Width="200" Height="200" Content="Open Orders View (WIP)" Command="{Binding OpenOrdersView}"/>
+    </Grid>
+</UserControl>

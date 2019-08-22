@@ -101,6 +101,14 @@
       <DependentUpon>EmployeeModifier.xaml</DependentUpon>
     </Compile>
     <Compile Include="EmployeeModifier\EmployeeModifierVM.cs" />
+    <Compile Include="EmployeeSelector\EmployeeSelectorAdderVM.cs" />
+    <Compile Include="EmployeeSelector\EmployeeSelectorAdder.xaml.cs">
+      <DependentUpon>EmployeeSelectorAdder.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MainMenu\MainMenu.xaml.cs">
+      <DependentUpon>MainMenu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MainMenu\MainMenuVM.cs" />
     <Compile Include="RelayCommand.cs" />
     <Compile Include="EmployeeSelector\EmployeeSelector.xaml.cs">
       <DependentUpon>EmployeeSelector.xaml</DependentUpon>
@@ -123,6 +131,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="AppView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EmployeeSelector\EmployeeSelectorAdder.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainMenu\MainMenu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

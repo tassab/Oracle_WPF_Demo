@@ -12,7 +12,7 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-            <TextBlock Text="Search:" Margin="5" />
+            <TextBlock Text="Search:" Margin="5" FontSize="14" />
             <TextBox x:Name="search_Query" Width="150"  Margin="5" Text="{Binding SearchQuery, UpdateSourceTrigger=PropertyChanged}" />
         </StackPanel>
         <Grid Grid.Row="1">
@@ -35,13 +35,13 @@
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="{Binding First_Name}" FontSize="16" Margin="5" />
-                            <TextBlock Text="{Binding Last_Name}" FontSize="16" Margin="5" />
+                            <TextBlock Text="{Binding First_Name}" FontSize="16" Margin="0,0,5,0"/>
+                            <TextBlock Text="{Binding Last_Name}" FontSize="16"/>
                         </StackPanel>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
-            <TextBlock Grid.Row="1" Grid.Column="1" Margin="5" Text="{Binding SelectedEmployeeInfo}" TextWrapping="Wrap"/>
+            <TextBlock Grid.Row="1" Grid.Column="1" Margin="5" Text="{Binding SelectedEmployeeInfo}" TextWrapping="Wrap" FontSize="14"/>
         </Grid>
     </Grid>
 </UserControl>
