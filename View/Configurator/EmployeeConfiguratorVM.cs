@@ -8,7 +8,7 @@ using System.Windows.Input;
 
 namespace TestApp
 {
-    public class EmployeeConfiguratorVM : VMBase
+    public class EmployeeConfiguratorVM : BaseConfiguratorVM
     {
         private enum State
         {
@@ -17,41 +17,14 @@ namespace TestApp
             SELECT_MANAGER,
             SELECT_LOCATION
         };
-
-        #region fields
         private State _state;
-        private OracleDB _db;
-        private VMBase _content;
-        private VMBase _prevContent;
 
-        private ICommand _forwardButton;
-        private ICommand _backButton;
-        private string _forwardButttonText;
-        private string _backButttonText;
-        private string _title;
-        #endregion fields
-
-        #region properties
-        public VMBase Content { get { return _content; } set { SetProperty(ref _content, value); } }
-        public string ForwardButtonText { get { return _forwardButttonText;} set { SetProperty(ref _forwardButttonText, value); } }
-        public string BackButtonText { get { return _backButttonText;} set { SetProperty(ref _backButttonText, value); } }
-        public string Title { get { return _title; } set { SetProperty(ref _title, value); } }
-        public ICommand ForwardButton {
-            get { return _forwardButton ?? new RelayCommand(OnForwardButton); }
-            set { _forwardButton = value; }
-        }
-        public ICommand BackButton
-        {
-            get { return _backButton ?? new RelayCommand(OnBackButton); }
-            set { _backButton = value; }
-        }
-        #endregion properties
         public EmployeeConfiguratorVM(OracleDB db)
         {
             _db = db;
             ChangeState(State.SELECT_EMPLOYEE_TO_CONFIGURE);
         }
-        private void OnForwardButton(object param)
+        protected override void OnForwardButton(object param)
         {
             Console.WriteLine("Forward!");
             switch (_state)
@@ -68,7 +41,7 @@ namespace TestApp
                     break;
             }
         }
-        private void OnBackButton(object param)
+        protected override void OnBackButton(object param)
         {
             Console.WriteLine("Retreat...");
             switch (_state)
