@@ -31,13 +31,15 @@ namespace TestApp
             if (a.PropertyName == "SelectedEmployee")
             {
                 SelectedEmployeeInfo = SelectedEmployee==null ? "" :
-                    $"{SelectedEmployee.First_Name} {SelectedEmployee.Last_Name}\n" +
+                    $"{SelectedEmployee.FullName}\n" +
                     $"Email: {SelectedEmployee.Email}\nLocation: {SelectedEmployee.Location}\n" +
-                    $"Manager: {SelectedEmployee.Manager?.FullName}";
+                    $"Phone: {SelectedEmployee.Phone}\n" +
+                    $"Hire date: {SelectedEmployee.Hire_Date.ToString("dd-MM-yyyy")}\n" +
+                    $"Manager: {SelectedEmployee.Manager?.FullName ?? "None"}";
             }
             else if (a.PropertyName == "SearchQuery")
             {
-                if (SearchQuery != "")
+                if (SearchQuery != "" && SearchQuery != null)
                 {
                     EmployeeList = _db.Employees.Where(e => e.First_Name.ToLower().Contains(SearchQuery.ToLower()) || e.Last_Name.ToLower().Contains(SearchQuery.ToLower())).ToList();
                 }

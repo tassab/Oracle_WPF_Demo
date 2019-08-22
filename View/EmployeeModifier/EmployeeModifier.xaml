@@ -29,12 +29,14 @@
                 <RowDefinition/>
                 <RowDefinition/>
                 <RowDefinition/>
+                <RowDefinition/>
             </Grid.RowDefinitions>
             <TextBlock Grid.Row="0" Text="First Name: " HorizontalAlignment="Right" FontSize="16"/>
             <TextBlock Grid.Row="1" Text="Last Name: " HorizontalAlignment="Right"  FontSize="16"/>
             <TextBlock Grid.Row="2" Text="Phone: " HorizontalAlignment="Right"  FontSize="16"/>
             <TextBlock Grid.Row="3" Text="Email: " HorizontalAlignment="Right"  FontSize="16"/>
             <TextBlock Grid.Row="4" Text="Title: " HorizontalAlignment="Right"  FontSize="16"/>
+            <TextBlock Grid.Row="5" Text="Hire Date: " HorizontalAlignment="Right"  FontSize="16"/>
 
 
             <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding FirstName}" FontSize="16"/>
@@ -42,6 +44,7 @@
             <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding Phone}" FontSize="16"/>
             <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding Email}" FontSize="16"/>
             <TextBox Grid.Row="4" Grid.Column="1" Text="{Binding Title}" FontSize="16"/>
+            <DatePicker Grid.Row="5" Grid.Column="1" FirstDayOfWeek="Monday" SelectedDateFormat="Long" SelectedDate="{Binding HireDate}"/>
         </Grid>
         <Grid Grid.Column="3">
             <Grid.RowDefinitions>
