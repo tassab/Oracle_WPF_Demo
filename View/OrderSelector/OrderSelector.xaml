@@ -1,0 +1,47 @@
+﻿<UserControl x:Class="TestApp.OrderSelector"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TestApp"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+            <TextBlock Text="Search:" Margin="5" FontSize="14" />
+            <TextBox x:Name="search_Query" Width="150"  Margin="5" Text="{Binding SearchQuery, UpdateSourceTrigger=PropertyChanged}" />
+        </StackPanel>
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="Orders" FontSize="18" TextAlignment="Center"/>
+            <TextBlock Text="Info" Grid.Column="1" FontSize="18" TextAlignment="Center"/>
+            <ListBox Grid.Row="1" Margin="5" ItemsSource="{Binding OrderList}" Name="CostumersListBox" SelectedItem="{Binding SelectedOrder}">
+                <ListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <UniformGrid Columns="2" IsItemsHost="True" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    </ItemsPanelTemplate>
+                </ListBox.ItemsPanel>
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding Order_Id}" FontSize="16" Margin="0,0,5,0"/>
+                            <TextBlock Text="{Binding Customer.Name}" FontSize="16"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+            <TextBlock Grid.Row="1" Grid.Column="1" Margin="5" Text="{Binding SelectedOrderInfo}" TextWrapping="Wrap" FontSize="14"/>
+        </Grid>
+    </Grid>
+</UserControl>
