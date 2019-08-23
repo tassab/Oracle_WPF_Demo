@@ -8,23 +8,29 @@ using System.Windows.Input;
 
 namespace TestApp
 {
-    public class OrderConfiguratorVM : BaseConfiguratorVM
+    public interface IOrderConfiguratorVMParent
+    {
+        void OnExitOrderConfigurator(object param);
+    }
+
+    public class OrderConfiguratorVM : BaseConfiguratorVM, IOrderSelectorAdderVMParent
     {
         private enum State
         {
-            SELECT_ORDER_TO_CONFIGURE
+            ORDER_LIST
         };
         private State _state;
+        private IOrderConfiguratorVMParent _parent;
 
-        public OrderConfiguratorVM(OracleDB db)
+        public OrderConfiguratorVM(IOrderConfiguratorVMParent parent, OracleDB db)
         {
             _db = db;
-            ChangeState(State.SELECT_ORDER_TO_CONFIGURE);
+            _parent = parent;
+            ChangeState(State.ORDER_LIST);
         }
 
         protected override void OnForwardButton(object param)
         {
-            Console.WriteLine("Forward!");
             switch (_state)
             {
                 default:
@@ -33,9 +39,11 @@ namespace TestApp
         }
         protected override void OnBackButton(object param)
         {
-            Console.WriteLine("Retreat...");
             switch (_state)
             {
+                case State.ORDER_LIST:
+                    _parent.OnExitOrderConfigurator(this);
+                    break;
                 default:
                     break;
             }
@@ -45,9 +53,26 @@ namespace TestApp
         {
             switch (newState)
             {
+                case State.ORDER_LIST:
+                    Content = new OrderSelectorAdderVM(this, _db);
+                    ForwardButtonText = "Configure Order";
+                    BackButtonText = "Back";
+                    Title = "Select Order to Configure";
+                    _state = State.ORDER_LIST;
+                    break;
                 default:
                     break;
             }
+        }
+
+        public void OnAddNewOrder(object param)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void OnRemoveOrder(object param)
+        {
+            throw new NotImplementedException();
         }
     }
 }

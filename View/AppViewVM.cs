@@ -8,7 +8,7 @@ using System.Windows.Input;
 
 namespace TestApp
 {
-    public class AppViewVM : VMBase, IMainMenuVMParent, IEmployeeConfiguratorVMParent
+    public class AppViewVM : VMBase, IMainMenuVMParent, IEmployeeConfiguratorVMParent, IOrderConfiguratorVMParent
     {
         private OracleDB _db;
         private VMBase _currentVM;
@@ -27,10 +27,15 @@ namespace TestApp
 
         public void OnOpenOrdersView(object param)
         {
-            Console.WriteLine("This view is not available yet");
+            CurrentVM = new OrderConfiguratorVM(this, _db);
         }
 
         public void OnExitEmployeeConfigurator(object param)
+        {
+            CurrentVM = new MainMenuVM(this);
+        }
+
+        public void OnExitOrderConfigurator(object param)
         {
             CurrentVM = new MainMenuVM(this);
         }

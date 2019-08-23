@@ -20,6 +20,15 @@
         <DataTemplate DataType="{x:Type local:EmployeeSelectorAdderVM}">
             <local:EmployeeSelectorAdder />
         </DataTemplate>
+        <DataTemplate DataType="{x:Type local:OrderConfiguratorVM}">
+            <local:Configurator />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type local:OrderSelectorVM}">
+            <local:OrderSelector />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type local:OrderSelectorAdderVM}">
+            <local:OrderSelectorAdder />
+        </DataTemplate>
         <DataTemplate DataType="{x:Type local:MainMenuVM}">
             <local:MainMenu />
         </DataTemplate>

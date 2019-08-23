@@ -103,6 +103,14 @@
       <DependentUpon>EmployeeModifier.xaml</DependentUpon>
     </Compile>
     <Compile Include="EmployeeModifier\EmployeeModifierVM.cs" />
+    <Compile Include="OrderSelector\OrderSelector.xaml.cs">
+      <DependentUpon>OrderSelector.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="OrderSelector\OrderSelectorAdder.xaml.cs">
+      <DependentUpon>OrderSelectorAdder.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="OrderSelector\OrderSelectorAdderVM.cs" />
+    <Compile Include="OrderSelector\OrderSelectorVM.cs" />
     <Compile Include="EmployeeSelector\EmployeeSelectorAdderVM.cs" />
     <Compile Include="EmployeeSelector\EmployeeSelectorAdder.xaml.cs">
       <DependentUpon>EmployeeSelectorAdder.xaml</DependentUpon>
@@ -127,6 +135,14 @@
     <Page Include="EmployeeModifier\EmployeeModifier.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="OrderSelector\OrderSelector.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="OrderSelector\OrderSelectorAdder.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="EmployeeSelector\EmployeeSelector.xaml">
       <SubType>Designer</SubType>
