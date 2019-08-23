@@ -23,7 +23,7 @@ namespace TestApp
         public OrderSelectorVM(OracleDB db)
         {
             _db = db;
-            OrderList = _db.Orders.ToList();
+            OrderList = _db.Orders.OrderBy(o => o.Order_Id).ToList();
             PropertyChanged += RespondToPropertyChanged;
         }
 
@@ -42,12 +42,25 @@ namespace TestApp
             {
                 if (SearchQuery != null && SearchQuery != "")
                 {
-                    OrderList = _db.Orders.ToList() // does not work on entity level, have to get the whole list first...
-                        .Where(o =>
-                            o.Order_Id.ToString() == SearchQuery
-                            || o.Customer.Name.ToLower().Contains(SearchQuery.ToLower())
-                            || o.Items.Any(i => i.Product.Name.ToLower().Contains(SearchQuery.ToLower())))
-                        .ToList();
+                    // The problem was converting a property to a different type in a query is appearently not supported
+                    // This solution is more efficient but does not allow for searching partial Order_Ids
+                    // eg. searching for "3" should show Orders with ids "3", "13", "31", "103" and so on
+                    int searchAsInt;
+                    if(int.TryParse(SearchQuery, out searchAsInt))
+                    {
+                        OrderList = _db.Orders.Where(o => o.Order_Id == searchAsInt)
+                            .OrderBy(o => o.Order_Id)
+                            .ToList();
+                    }
+                    else
+                    {
+                        OrderList = _db.Orders
+                           .Where(o =>
+                                o.Customer.Name.ToLower().Contains(SearchQuery.ToLower())
+                               || o.Items.Any(i => i.Product.Name.ToLower().Contains(SearchQuery.ToLower())))
+                           .OrderBy(o => o.Order_Id)
+                           .ToList();
+                    }
                 }
                 else
                 {
