@@ -10,6 +10,7 @@ namespace TestApp
         protected OracleDB _db;
         protected VMBase _content;
         protected VMBase _prevContent;
+        protected IMessageDialogService _messageDialogService;
 
         private ICommand _forwardButton;
         private ICommand _backButton;
