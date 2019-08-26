@@ -1,5 +1,4 @@
 ﻿using Model;
-using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -42,25 +41,14 @@ namespace TestApp
             {
                 if (SearchQuery != null && SearchQuery != "")
                 {
-                    // The problem was converting a property to a different type in a query is appearently not supported
-                    // This solution is more efficient but does not allow for searching partial Order_Ids
-                    // eg. searching for "3" should show Orders with ids "3", "13", "31", "103" and so on
                     int searchAsInt;
-                    if(int.TryParse(SearchQuery, out searchAsInt))
-                    {
-                        OrderList = _db.Orders.Where(o => o.Order_Id == searchAsInt)
-                            .OrderBy(o => o.Order_Id)
-                            .ToList();
-                    }
-                    else
-                    {
-                        OrderList = _db.Orders
-                           .Where(o =>
-                                o.Customer.Name.ToLower().Contains(SearchQuery.ToLower())
-                               || o.Items.Any(i => i.Product.Name.ToLower().Contains(SearchQuery.ToLower())))
-                           .OrderBy(o => o.Order_Id)
-                           .ToList();
-                    }
+                    bool searchForId = int.TryParse(SearchQuery, out searchAsInt);
+                    OrderList = _db.Orders
+                        .Where(o =>
+                            searchForId && o.Order_Id == searchAsInt
+                            || o.Customer.Name.ToLower().Contains(SearchQuery.ToLower())
+                            || o.Items.Any(i => i.Product.Name.ToLower().Contains(SearchQuery.ToLower())))
+                        .OrderBy(o => o.Order_Id).ToList();
                 }
                 else
                 {

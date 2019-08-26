@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 
 namespace TestApp
@@ -22,10 +23,11 @@ namespace TestApp
         private State _state;
         private IOrderConfiguratorVMParent _parent;
 
-        public OrderConfiguratorVM(IOrderConfiguratorVMParent parent, OracleDB db)
+        public OrderConfiguratorVM(IOrderConfiguratorVMParent parent, OracleDB db, IMessageDialogService messageDialogService)
         {
             _db = db;
             _parent = parent;
+            _messageDialogService = messageDialogService;
             ChangeState(State.ORDER_LIST);
         }
 
@@ -72,7 +74,18 @@ namespace TestApp
 
         public void OnRemoveOrder(object param)
         {
-            throw new NotImplementedException();
+            var vm = Content as OrderSelectorVM;
+            if (vm == null) { Console.WriteLine("This shouldnt happen"); return; }
+            if (vm.SelectedOrder == null) { return; }
+            if (_messageDialogService.ShowYesNoDialog(
+                $"Do you want to remove the order with ID={vm.SelectedOrder.Order_Id} from the database?",
+                "Confirm removal", MessageBoxImage.Warning)
+                == MessageDialogResult.No)
+            {
+                return;
+            }
+            _db.Orders.Remove(vm.SelectedOrder);
+            _db.SaveChanges();
         }
     }
 }

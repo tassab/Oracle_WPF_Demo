@@ -26,10 +26,11 @@ namespace TestApp
 
         private IEmployeeConfiguratorVMParent _parent;
 
-        public EmployeeConfiguratorVM(IEmployeeConfiguratorVMParent parent, OracleDB db)
+        public EmployeeConfiguratorVM(IEmployeeConfiguratorVMParent parent, OracleDB db, IMessageDialogService messageDialogService)
         {
             _parent = parent;
             _db = db;
+            _messageDialogService = messageDialogService;
             ChangeState(State.EMPLOYEE_LIST);
         }
         protected override void OnForwardButton(object param)
@@ -101,11 +102,10 @@ namespace TestApp
             var vm = Content as EmployeeSelectorVM;
             if (vm == null) { Console.WriteLine("This shouldnt happen"); return; }
             if (vm.SelectedEmployee == null) { return; }
-            if(MessageBox.Show($"Do you want to remove {vm.SelectedEmployee.FullName} from the database?",
-                "Confirm removal",
-                MessageBoxButton.YesNo,
-                MessageBoxImage.Warning)
-                == MessageBoxResult.No)
+            if (_messageDialogService.ShowYesNoDialog(
+                $"Do you want to remove {vm.SelectedEmployee.FullName} from the database?",
+                "Confirm removal", MessageBoxImage.Warning)
+                == MessageDialogResult.No)
             {
                 return;
             }
@@ -131,7 +131,7 @@ namespace TestApp
                     Content = newVMCast;
                     _state = State.CONFIGURE_EMPLOYEE;
                     break;
-                    
+
                 case State.SELECT_MANAGER:
                     _prevContent = Content;
                     EmployeeModifierVM prevVM = _prevContent as EmployeeModifierVM;
