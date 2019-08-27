@@ -8,7 +8,7 @@
     <OutputType>Exe</OutputType>
     <RootNamespace>TestApp</RootNamespace>
     <AssemblyName>TestApp</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
@@ -60,13 +60,13 @@
       <HintPath>..\packages\Autofac.4.9.4\lib\net45\Autofac.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Oracle.ManagedDataAccess, Version=4.122.19.1, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=MSIL">
-      <HintPath>..\packages\Oracle.ManagedDataAccess.19.3.1\lib\net40\Oracle.ManagedDataAccess.dll</HintPath>
+      <HintPath>..\packages\Oracle.ManagedDataAccess.19.3.0\lib\net40\Oracle.ManagedDataAccess.dll</HintPath>
     </Reference>
     <Reference Include="Oracle.ManagedDataAccess.EntityFramework, Version=6.122.19.1, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=MSIL">
       <HintPath>..\packages\Oracle.ManagedDataAccess.EntityFramework.19.3.0\lib\net45\Oracle.ManagedDataAccess.EntityFramework.dll</HintPath>
@@ -95,18 +95,13 @@
     <Compile Include="AppView.xaml.cs">
       <DependentUpon>AppView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="AppViewVM.cs" />
     <Compile Include="BootStrapper.cs" />
-    <Compile Include="Configurator\BaseConfiguratorVM.cs" />
-    <Compile Include="Configurator\OrderConfiguratorVM.cs" />
-    <Compile Include="Configurator\EmployeeConfiguratorVM.cs" />
     <Compile Include="Configurator\Configurator.xaml.cs">
       <DependentUpon>Configurator.xaml</DependentUpon>
     </Compile>
     <Compile Include="EmployeeModifier\EmployeeModifier.xaml.cs">
       <DependentUpon>EmployeeModifier.xaml</DependentUpon>
     </Compile>
-    <Compile Include="EmployeeModifier\EmployeeModifierVM.cs" />
     <Compile Include="MessageDialogService.cs" />
     <Compile Include="OrderSelector\OrderSelector.xaml.cs">
       <DependentUpon>OrderSelector.xaml</DependentUpon>
@@ -114,21 +109,15 @@
     <Compile Include="OrderSelector\OrderSelectorAdder.xaml.cs">
       <DependentUpon>OrderSelectorAdder.xaml</DependentUpon>
     </Compile>
-    <Compile Include="OrderSelector\OrderSelectorAdderVM.cs" />
-    <Compile Include="OrderSelector\OrderSelectorVM.cs" />
-    <Compile Include="EmployeeSelector\EmployeeSelectorAdderVM.cs" />
     <Compile Include="EmployeeSelector\EmployeeSelectorAdder.xaml.cs">
       <DependentUpon>EmployeeSelectorAdder.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainMenu\MainMenu.xaml.cs">
       <DependentUpon>MainMenu.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MainMenu\MainMenuVM.cs" />
-    <Compile Include="RelayCommand.cs" />
     <Compile Include="EmployeeSelector\EmployeeSelector.xaml.cs">
       <DependentUpon>EmployeeSelector.xaml</DependentUpon>
     </Compile>
-    <Compile Include="VMBase.cs" />
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -167,7 +156,6 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EmployeeSelector\EmployeeSelectorVM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -198,6 +186,10 @@
     <ProjectReference Include="..\Model\Model.csproj">
       <Project>{f7345588-95da-4b3f-8a64-215ed5889607}</Project>
       <Name>Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Presentation\Presentation.csproj">
+      <Project>{588573c0-892d-4e59-8e8b-b83596f368d0}</Project>
+      <Name>Presentation</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

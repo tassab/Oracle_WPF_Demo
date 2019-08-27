@@ -7,22 +7,11 @@ using System.Windows;
 
 namespace TestApp
 {
-    public interface IMessageDialogService
-    {
-        MessageDialogResult ShowYesNoDialog(string message, string title, MessageBoxImage image);
-    }
-
-    public enum MessageDialogResult
-    {
-        Yes,
-        No
-    }
-
     public class MessageDialogService : IMessageDialogService
     {
-        public MessageDialogResult ShowYesNoDialog(string message, string title, MessageBoxImage image)
+        public MessageDialogResult ShowYesNoDialog(string message, string title)
         {
-            return MessageBox.Show(message, title, MessageBoxButton.YesNo, image) == MessageBoxResult.Yes ? MessageDialogResult.Yes : MessageDialogResult.No;
+            return MessageBox.Show(message, title, MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes ? MessageDialogResult.Yes : MessageDialogResult.No;
         }
     }
 }

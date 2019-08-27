@@ -1,5 +1,4 @@
-﻿using Autofac;
-using Model;
+﻿using Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,25 +11,25 @@ namespace TestApp
     public class AppViewVM : VMBase, IMainMenuVMParent, IEmployeeConfiguratorVMParent, IOrderConfiguratorVMParent
     {
         private OracleDB _db;
-        private IContainer _diContainer;
         private VMBase _currentVM;
+        private IMessageDialogService _dialogService;
         public VMBase CurrentVM { get { return _currentVM; } set { SetProperty(ref _currentVM, value); } }
 
-        public AppViewVM()
+        public AppViewVM(OracleDB db, IMessageDialogService dialogService)
         {
             CurrentVM = new MainMenuVM(this);
-            _db = new OracleDB();
-            _diContainer = new BootStrapper().BootStrap();
+            _db = db;
+            _dialogService = dialogService;
         }
 
         public void OnOpenEmployeeConfigurator(object param)
         {
-            CurrentVM = new EmployeeConfiguratorVM(this, _db, _diContainer.Resolve<IMessageDialogService>());
+            CurrentVM = new EmployeeConfiguratorVM(this, _db, _dialogService);
         }
 
         public void OnOpenOrdersView(object param)
         {
-            CurrentVM = new OrderConfiguratorVM(this, _db, _diContainer.Resolve<IMessageDialogService>());
+            CurrentVM = new OrderConfiguratorVM(this, _db, _dialogService);
         }
 
         public void OnExitEmployeeConfigurator(object param)

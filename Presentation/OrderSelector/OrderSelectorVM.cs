@@ -45,7 +45,7 @@ namespace TestApp
                     bool searchForId = int.TryParse(SearchQuery, out searchAsInt);
                     OrderList = _db.Orders
                         .Where(o =>
-                            searchForId && o.Order_Id == searchAsInt
+                            o.Order_Id.ToString().Contains(SearchQuery)
                             || o.Customer.Name.ToLower().Contains(SearchQuery.ToLower())
                             || o.Items.Any(i => i.Product.Name.ToLower().Contains(SearchQuery.ToLower())))
                         .OrderBy(o => o.Order_Id).ToList();

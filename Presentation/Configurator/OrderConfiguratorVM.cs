@@ -79,7 +79,7 @@ namespace TestApp
             if (vm.SelectedOrder == null) { return; }
             if (_messageDialogService.ShowYesNoDialog(
                 $"Do you want to remove the order with ID={vm.SelectedOrder.Order_Id} from the database?",
-                "Confirm removal", MessageBoxImage.Warning)
+                "Confirm removal")
                 == MessageDialogResult.No)
             {
                 return;

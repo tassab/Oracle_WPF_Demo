@@ -104,7 +104,7 @@ namespace TestApp
             if (vm.SelectedEmployee == null) { return; }
             if (_messageDialogService.ShowYesNoDialog(
                 $"Do you want to remove {vm.SelectedEmployee.FullName} from the database?",
-                "Confirm removal", MessageBoxImage.Warning)
+                "Confirm removal")
                 == MessageDialogResult.No)
             {
                 return;

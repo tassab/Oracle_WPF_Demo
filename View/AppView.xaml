@@ -4,32 +4,33 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TestApp"
+        xmlns:vms="clr-namespace:TestApp;assembly=Presentation"
         mc:Ignorable="d"
         Title="WPF Oracle Test App" Height="450" Width="800">
 
     <Window.Resources>
-        <DataTemplate DataType="{x:Type local:EmployeeSelectorVM}">
+        <DataTemplate DataType="{x:Type vms:EmployeeSelectorVM}">
             <local:EmployeeSelector />
         </DataTemplate>
-        <DataTemplate DataType="{x:Type local:EmployeeConfiguratorVM}">
+        <DataTemplate DataType="{x:Type vms:EmployeeConfiguratorVM}">
             <local:Configurator />
         </DataTemplate>
-        <DataTemplate DataType="{x:Type local:EmployeeModifierVM}">
+        <DataTemplate DataType="{x:Type vms:EmployeeModifierVM}">
             <local:EmployeeModifier />
         </DataTemplate>
-        <DataTemplate DataType="{x:Type local:EmployeeSelectorAdderVM}">
+        <DataTemplate DataType="{x:Type vms:EmployeeSelectorAdderVM}">
             <local:EmployeeSelectorAdder />
         </DataTemplate>
-        <DataTemplate DataType="{x:Type local:OrderConfiguratorVM}">
+        <DataTemplate DataType="{x:Type vms:OrderConfiguratorVM}">
             <local:Configurator />
         </DataTemplate>
-        <DataTemplate DataType="{x:Type local:OrderSelectorVM}">
+        <DataTemplate DataType="{x:Type vms:OrderSelectorVM}">
             <local:OrderSelector />
         </DataTemplate>
-        <DataTemplate DataType="{x:Type local:OrderSelectorAdderVM}">
+        <DataTemplate DataType="{x:Type vms:OrderSelectorAdderVM}">
             <local:OrderSelectorAdder />
         </DataTemplate>
-        <DataTemplate DataType="{x:Type local:MainMenuVM}">
+        <DataTemplate DataType="{x:Type vms:MainMenuVM}">
             <local:MainMenu />
         </DataTemplate>
     </Window.Resources>

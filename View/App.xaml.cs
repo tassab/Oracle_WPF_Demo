@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Autofac;
+using Model;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -16,9 +18,9 @@ namespace TestApp
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
-
+            IContainer container = new BootStrapper().BootStrap();
             AppView app = new AppView();
-            AppViewVM appViewVM = new AppViewVM();
+            AppViewVM appViewVM = new AppViewVM(new OracleDB(), container.Resolve<IMessageDialogService>());
             app.DataContext = appViewVM;
             app.Show();
         }
