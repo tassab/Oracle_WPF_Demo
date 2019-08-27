@@ -14,7 +14,7 @@ namespace Presentation.Tests
     [TestFixture]
     public class EmployeeSelectorAdderVMTests
     {
-        private OracleDB GetFakeDatabase()
+        private Mock<OracleDB> GetFakeDatabase()
         {
             var data = new List<Employee>
             {
@@ -48,13 +48,13 @@ namespace Presentation.Tests
             var mockDB = new Mock<OracleDB>();
             mockDB.Setup(m => m.Employees).Returns(mockEmployees.Object);
 
-            return mockDB.Object;
+            return mockDB;
         }
         [Test]
         public void GetsAllEmployees()
         {
             var mockParent = new Mock<IEmployeeSelectorAdderVMParent>();
-            var vm = new EmployeeSelectorAdderVM(mockParent.Object, GetFakeDatabase());
+            var vm = new EmployeeSelectorAdderVM(mockParent.Object, GetFakeDatabase().Object);
             var empList = vm.EmployeeList;
 
             Assert.That(empList.Count, Is.EqualTo(4));
@@ -63,12 +63,25 @@ namespace Presentation.Tests
         public void FindsManagerBySearch()
         {
             var mockParent = new Mock<IEmployeeSelectorAdderVMParent>();
-            var vm = new EmployeeSelectorAdderVM(mockParent.Object, GetFakeDatabase());
+            var vm = new EmployeeSelectorAdderVM(mockParent.Object, GetFakeDatabase().Object);
             vm.SearchQuery = "Mana";
             var empList = vm.EmployeeList;
 
             Assert.That(empList.Count, Is.EqualTo(1));
             Assert.That(empList.FirstOrDefault().FullName, Is.EqualTo("Manager Testerson"));
+        }
+        [Test]
+        public void CallsRemove()
+        {
+            var mockParent = new Mock<IEmployeeSelectorAdderVMParent>();
+            var vm = new EmployeeSelectorAdderVM(mockParent.Object, GetFakeDatabase().Object);
+            var employeeToDelete = vm.EmployeeList.FirstOrDefault();
+
+
+            vm.SelectedEmployee = employeeToDelete;
+            vm.RemoveEmployee.Execute(null);
+
+            mockParent.Verify(m => m.OnRemoveEmployee(It.IsAny<object>()), Times.Once);
         }
     }
 }

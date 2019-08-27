@@ -20,15 +20,15 @@ namespace Model
             base.OnModelCreating(modelBuilder);
             modelBuilder.Conventions.Add(new PropertyConvention());
         }
-        public DbSet<Contact> Contacts { get; set; }
-        public DbSet<Region> Regions { get; set; }
-        public DbSet<Country> Countries { get; set; }
-        public DbSet<Employee> Employees { get; set; }
-        public DbSet<Order> Orders { get; set; }
-        public DbSet<Customer> Customers { get; set; }
-        public DbSet<ProductCategory> ProductCategories { get; set; }
-        public DbSet<Product> Products { get; set; }
-        public DbSet<Warehouse> Warehouses { get; set; }
+        public virtual DbSet<Contact> Contacts { get; set; }
+        public virtual DbSet<Region> Regions { get; set; }
+        public virtual DbSet<Country> Countries { get; set; }
+        public virtual DbSet<Employee> Employees { get; set; }
+        public virtual DbSet<Order> Orders { get; set; }
+        public virtual DbSet<Customer> Customers { get; set; }
+        public virtual DbSet<ProductCategory> ProductCategories { get; set; }
+        public virtual DbSet<Product> Products { get; set; }
+        public virtual DbSet<Warehouse> Warehouses { get; set; }
 
     }
     public class PropertyConvention : IStoreModelConvention<EdmProperty>
