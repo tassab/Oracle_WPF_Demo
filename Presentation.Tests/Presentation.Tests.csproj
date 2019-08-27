@@ -74,7 +74,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EmployeeConfiguratorTests.cs" />
     <Compile Include="EmployeeSelectorAdderVMTests.cs" />
+    <Compile Include="FakeDatabase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
